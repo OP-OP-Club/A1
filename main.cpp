@@ -16,5 +16,6 @@ int main(){
     printf("%s\n", arr1);
 
     getchar();
+    printf("Hello WOrld\n");
     return 0;
 }
