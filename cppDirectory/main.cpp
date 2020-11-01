@@ -1,4 +1,4 @@
-#include "global.cpp"
+#include "../hDirectory/global.h"
 #include<stdio.h>
 
 int main(){
