@@ -93,6 +93,9 @@ struct Drink {
 struct Dessert ArrayDessert[500];
 struct Drink ArrayDrink[500];
 
+int DessertLen = 0;
+int DrinkLen = 0;
+
 // struct Dessert* InitializeDessertLinkedList(){
 //     return (struct Dessert*) malloc (sizeof(struct Dessert));
 // }
