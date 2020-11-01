@@ -6,6 +6,40 @@
 //Variabel Global Profit
 int PROFIT = 0;
 
+//Struct Global & Counter Struct Global
+struct Dessert {
+    char food_name[500];
+    int food_price;
+    char dessert_topping[20];
+    float dessert_calories;
+    int dessert_cooking_time;
+
+    // struct Dessert *next;
+};
+
+struct Drink {
+    char food_name[500];
+    int food_price;
+    char drink_flavor[20];
+    char drink_size;
+    int drink_cooking_time;
+
+    // struct Drink *next;
+};
+
+struct Dessert ArrayDessert[500];
+struct Drink ArrayDrink[500];
+
+int DessertLen = 0;
+int DrinkLen = 0;
+
+//ClearScreen
+void ClearScreen(){
+    for(int i = 0; i < 50; i++){
+        puts("");
+    }
+}
+
 //Pengganti Strlen pada string.h
 int strlen(char arr[]){
     int count = 0;
@@ -70,31 +104,6 @@ void strCpy(char arr1[], char arr2[]){
     arr1[index] = '\0';
 }
 
-struct Dessert {
-    char food_name[500];
-    int food_price;
-    char dessert_topping[20];
-    float dessert_calories;
-    int dessert_cooking_time;
-
-    // struct Dessert *next;
-};
-
-struct Drink {
-    char food_name[500];
-    int food_price;
-    char drink_flavor[20];
-    char drink_size;
-    int drink_cooking_time;
-
-    // struct Drink *next;
-};
-
-struct Dessert ArrayDessert[500];
-struct Drink ArrayDrink[500];
-
-int DessertLen = 0;
-int DrinkLen = 0;
 
 // struct Dessert* InitializeDessertLinkedList(){
 //     return (struct Dessert*) malloc (sizeof(struct Dessert));
