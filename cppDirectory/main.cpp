@@ -1,5 +1,5 @@
-#include "../hDirectory/global.h"
 #include<stdio.h>
+#include "../hDirectory/global.h"
 
 int main(){
 
