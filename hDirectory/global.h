@@ -13,6 +13,7 @@ struct Dessert {
     char dessert_topping[20];
     float dessert_calories;
     int dessert_cooking_time;
+    char created_at[50];
 
     // struct Dessert *next;
 };
@@ -23,6 +24,7 @@ struct Drink {
     char drink_flavor[20];
     char drink_size;
     int drink_cooking_time;
+    char created_at[50];
 
     // struct Drink *next;
 };
