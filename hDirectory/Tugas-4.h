@@ -33,6 +33,25 @@ void showCookingProcess(){
         DrinkLen = 2;
 
         ClearScreen();
+
+        for(int k=0;k<DrinkLen;k++)
+        {
+            ArrayDrink[k].drink_cooking_time-=10;
+            if(ArrayDrink[k].drink_cooking_time<=0)
+            {
+                ArrayDrink[k].drink_cooking_time=0;
+            }
+        }
+
+        for(int k=0;k<DessertLen;k++)
+        {
+            ArrayDessert[k].dessert_cooking_time-=10;
+            if(ArrayDessert[k].dessert_cooking_time<=0)
+            {
+                ArrayDessert[k].dessert_cooking_time=0;
+            }
+        }
+
         int flag = 0; //tanda apakah ada yang masih dimasak ato nggak (0 = tidak)
         int numberProcess=0;
         //cek apakah struct dessert/drink ada isinya ato nggak, kalo ga ada berarti ga ada yang dimasak --> flag = 0
@@ -77,12 +96,14 @@ void showCookingProcess(){
             {
                 printf("| %-2d| Dessert          | %-20s| $%-2d| %-2d         s\n", numberProcess, ArrayDessert[j].food_name , ArrayDessert[j].food_price, ArrayDessert[j].dessert_cooking_time);
                 numberProcess++;
+                ArrayDessert[j].dessert_cooking_time-=10;
             }
 
             for(int j=0;j<DrinkLen;j++)
             {
                 printf("| %-2d| Dessert          | %-20s| $%-2d| %-2d         s\n", numberProcess, ArrayDrink[j].food_name , ArrayDrink[j].food_price, ArrayDrink[j].drink_cooking_time);
                 numberProcess++;
+                ArrayDrink[j].drink_cooking_time-=10;
             }
 
             printf("Press Enter to return to main menu");
