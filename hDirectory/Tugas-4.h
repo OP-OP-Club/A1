@@ -23,6 +23,7 @@ void showCookingProcess(){
                     ArrayDessert[i].dessert_cooking_time-=10;
                     if(ArrayDessert[i].dessert_cooking_time<=0) {
                         ArrayDessert[i].dessert_cooking_time=0;
+                        PROFIT += ArrayDessert[i].food_price;
                     }
                     if(ArrayDessert[i].dessert_cooking_time > 0){
                         flag = 1;
@@ -35,6 +36,7 @@ void showCookingProcess(){
                     ArrayDrink[i].drink_cooking_time-=10;
                     if(ArrayDrink[i].drink_cooking_time<=0){
                         ArrayDrink[i].drink_cooking_time=0;
+                        PROFIT += ArrayDrink[i].food_price;
                     }
                     if(ArrayDrink[i].drink_cooking_time > 0){
                         flag = 1;
