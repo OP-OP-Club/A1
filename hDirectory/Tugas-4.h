@@ -82,7 +82,7 @@ void showCookingProcess(){
 
             for(int j=0;j<DrinkLen;j++)
             {
-                printf("| %-2d| Dessert          | %-20s| $%-2d| %-2d         s\n", numberProcess, ArrayDrink[j].food_name , ArrayDrink[j].food_price, ArrayDrink[j].dessert_cooking_time);
+                printf("| %-2d| Dessert          | %-20s| $%-2d| %-2d         s\n", numberProcess, ArrayDrink[j].food_name , ArrayDrink[j].food_price, ArrayDrink[j].drink_cooking_time);
                 numberProcess++;
             }
 
