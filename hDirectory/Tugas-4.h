@@ -52,16 +52,14 @@ void showCookingProcess(){
             //ini kalau misalkan ada cooking process
             puts("| No  | Type          | Name                    | Price  | Time Left |");
             puts("----------------------------------------------------------------------");
-            for(int j=0;j<DessertLen;j++)
-            {
+            for(int j=0;j<DessertLen;j++){
                 if(ArrayDessert[j].dessert_cooking_time > 0){
                     printf("| %-3d | Dessert       | %-24s| $%-3d   | %-2d      s |\n", numberProcess, ArrayDessert[j].food_name , ArrayDessert[j].food_price, ArrayDessert[j].dessert_cooking_time);
                     numberProcess++;
                 }
             }
 
-            for(int j=0;j<DrinkLen;j++)
-            {
+            for(int j=0;j<DrinkLen;j++){
                 if(ArrayDrink[j].drink_cooking_time > 0){
                     printf("| %-3d | Drink         | %-24s| $%-3d   | %-2d      s |\n", numberProcess, ArrayDrink[j].food_name , ArrayDrink[j].food_price, ArrayDrink[j].drink_cooking_time);
                     numberProcess++;
