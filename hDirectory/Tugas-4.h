@@ -1,8 +1,9 @@
-#include<stdio.h>
+#include <stdio.h>
 #include "global.h"
 
 //tugas 4 testing
 
 void showCookingProcess(){
     printf("Test\n");
+    printf("test lagi 2");
 }
