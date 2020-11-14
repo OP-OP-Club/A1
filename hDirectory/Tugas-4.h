@@ -32,30 +32,18 @@ void showCookingProcess(){
             //cek dessert dan kurangi 10 detik
             if(DessertLen != 0){
                 for(int i=0;i<DessertLen;i++){
-                    ArrayDessert[i].dessert_cooking_time-=10;
-                    if(ArrayDessert[i].dessert_cooking_time<=0) {
-                        ArrayDessert[i].dessert_cooking_time=0;
-                        if(DessertFlag[i] == 0){
-                            PROFIT += ArrayDessert[i].food_price;
-                        }
-                    }
                     if(ArrayDessert[i].dessert_cooking_time > 0){
                         flag = 1;
+                        break;
                     }
                 }
             }
             //cek drink dan kurangi 10 detik
-            if(DrinkLen != 0){
+            if(flag == 0 && DrinkLen != 0){
                 for(int i=0;i<DrinkLen;i++){
-                    ArrayDrink[i].drink_cooking_time-=10;
-                    if(ArrayDrink[i].drink_cooking_time<=0){
-                        ArrayDrink[i].drink_cooking_time=0;
-                        if(DrinkFlag[i] == 0){
-                            PROFIT += ArrayDrink[i].food_price;
-                        }
-                    }
                     if(ArrayDrink[i].drink_cooking_time > 0){
                         flag = 1;
+                        break;
                     }
                 }
             }   
@@ -63,12 +51,12 @@ void showCookingProcess(){
 
         //kalau misal flag==0 berarti ga ada yg lagi cooking progress/ga ada isi struct array nya
         if(flag == 0){
-            //printf("Profit: $%d\n\n", PROFIT);
+            printf("Profit: $%d\n\n", PROFIT);
             printf("There is no Dessert or Drink on the list!\n\n");
             printf("Press Enter to continue");
             getchar();
         }else{
-            //printf("Profit: $%d\n\n", PROFIT);
+            printf("Profit: $%d\n\n", PROFIT);
             //ini kalau misalkan ada cooking process
             puts("| No  | Type          | Name                    | Price  | Time Left |");
             puts("----------------------------------------------------------------------");
@@ -76,6 +64,13 @@ void showCookingProcess(){
                 if(ArrayDessert[j].dessert_cooking_time > 0){
                     printf("| %-3d | Dessert       | %-24s| $%-3d   | %-2d      s |\n", numberProcess, ArrayDessert[j].food_name , ArrayDessert[j].food_price, ArrayDessert[j].dessert_cooking_time);
                     numberProcess++;
+                    ArrayDessert[j].dessert_cooking_time-=10;
+                    if(ArrayDessert[j].dessert_cooking_time<=0) {
+                        ArrayDessert[j].dessert_cooking_time=0;
+                        if(DessertFlag[j] == 0){
+                            PROFIT += ArrayDessert[j].food_price;
+                        }
+                    }
                 }
             }
 
@@ -83,6 +78,13 @@ void showCookingProcess(){
                 if(ArrayDrink[j].drink_cooking_time > 0){
                     printf("| %-3d | Drink         | %-24s| $%-3d   | %-2d      s |\n", numberProcess, ArrayDrink[j].food_name , ArrayDrink[j].food_price, ArrayDrink[j].drink_cooking_time);
                     numberProcess++;
+                    ArrayDrink[j].drink_cooking_time-=10;
+                    if(ArrayDrink[j].drink_cooking_time<=0){
+                        ArrayDrink[j].drink_cooking_time=0;
+                        if(DrinkFlag[j] == 0){
+                            PROFIT += ArrayDrink[j].food_price;
+                        }
+                    }
                 }
             }
             printf("\n");
