@@ -34,7 +34,7 @@ void showCookingProcess(){
 
         ClearScreen();
         int flag = 0; //tanda apakah ada yang masih dimasak ato nggak (0 = tidak)
-
+        int numberProcess=0;
         //cek apakah struct dessert/drink ada isinya ato nggak, kalo ga ada berarti ga ada yang dimasak --> flag = 0
         if(DessertLen != 0 || DrinkLen != 0){
             flag = 1;
@@ -71,6 +71,21 @@ void showCookingProcess(){
             getchar();
         }else{
             //ini kalau misalkan ada cooking process
-            printf("Ada cooking\n");
+            puts("| No  | Type          | Name                    | Price  | Time Left |");
+            puts(" ---------------------------------------------------------------------");
+            for(int j=0;j<DessertLen;j++)
+            {
+                printf("| %-2d| Dessert          | %-20s| $%-2d| %-2d         s\n", numberProcess, ArrayDessert[j].food_name , ArrayDessert[j].food_price, ArrayDessert[j].dessert_cooking_time);
+                numberProcess++;
+            }
+
+            for(int j=0;j<DrinkLen;j++)
+            {
+                printf("| %-2d| Dessert          | %-20s| $%-2d| %-2d         s\n", numberProcess, ArrayDrink[j].food_name , ArrayDrink[j].food_price, ArrayDrink[j].dessert_cooking_time);
+                numberProcess++;
+            }
+
+            printf("Press Enter to return to main menu");
+            getchar();
         }
 }
