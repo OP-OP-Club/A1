@@ -2,7 +2,7 @@
 #include "global.h"
 
 void orderHistory() {
-	system("cls");
+	ClearScreen();
 	int ordered_flag=0;
 	for(int i=0;i<DessertLen;i++){
 		if(ArrayDessert[i].dessert_cooking_time<=0){
