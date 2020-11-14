@@ -7,6 +7,23 @@
 int PROFIT = 0;
 
 //Struct Global & Counter Struct Global
+
+struct MenuDessert {
+    char food_name[500];
+    int food_price;
+    char dessert_topping[20];
+    float dessert_calories;
+    int dessert_cooking_time;
+};
+
+struct MenuDrink {
+    char food_name[500];
+    int food_price;
+    char drink_flavor[20];
+    char drink_size;
+    int drink_cooking_time;
+};
+
 struct Dessert {
     char food_name[500];
     int food_price;
@@ -31,9 +48,14 @@ struct Drink {
 
 struct Dessert ArrayDessert[500];
 struct Drink ArrayDrink[500];
+struct MenuDessert ArrayDessertMenu[500];
+struct MenuDrink ArrayDrinkMenu[500];
 
 int DessertLen = 0;
 int DrinkLen = 0;
+
+int DessertMenuLen = 0;
+int DrinkMenuLen = 0;
 
 //ClearScreen
 void ClearScreen(){

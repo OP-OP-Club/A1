@@ -1,21 +1,10 @@
 #include<stdio.h>
 #include "../hDirectory/global.h"
+#include "../hDirectory/Tugas-5.h"
 
 int main(){
 
-    // printf("%d", PROFIT);
+	orderHistory();
 
-    char arr1[500];
-
-    char arr2[500] = "aosfisajgegw";
-
-    // strCpy(&arr1, arr2);
-
-    strCpy(arr1,arr2);
-
-    printf("%s\n", arr1);
-
-    getchar();
-    printf("Hello WOrld\n");
     return 0;
 }
