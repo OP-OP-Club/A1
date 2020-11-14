@@ -9,4 +9,5 @@ void showCookingProcess(){
     printf("Test\n");
     printf("test lagi 2\n");
     printf("test lagi 3\n");
+    printf("testing conflict\n");
 }
