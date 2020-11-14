@@ -4,7 +4,6 @@
 
 int main(){
 
-	orderHistory();
     showCookingProcess();
     return 0;
 }
