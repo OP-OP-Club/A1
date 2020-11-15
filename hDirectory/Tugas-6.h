@@ -16,12 +16,12 @@ void order(){
 	puts("| No  | Name                 | Price  | Topping    | Callories  | Flavor     | size  |");
 	puts(" -------------------------------------------------------------------------------------");
 	for(int i=0;i<DessertMenuLen;i++){
-		printf("| %-4d| %-21s| %-7d| %-11s| %-11.2f| -          | -     |\n", index, ArrayDessert[i].food_name, ArrayDessert[i].food_price, ArrayDessert[i].dessert_topping, ArrayDessert[i].dessert_calories);
+		printf("| %-4d| %-21s| %-7d| %-11s| %-11.2f| -          | -     |\n", index , ArrayDessertMenu[i].food_name , ArrayDessertMenu[i].food_price , ArrayDessertMenu[i].dessert_topping , ArrayDessertMenu[i].dessert_calories);
         index++;
 	}
 	
 	for(int i = 0; i<DrinkMenuLen; i++){
-		printf("| %-4d| %-21s| %-7d| -          |-           | %-11s| %c     |\n", index, ArrayDrink[i].food_name, ArrayDrink[i].food_price, ArrayDrink[i].drink_flavor, ArrayDrink[i].drink_size);
+		printf("| %-4d| %-21s| %-7d| -          |-           | %-11s| %c     |\n", index , ArrayDrinkMenu[i].food_name , ArrayDrinkMenu[i].food_price , ArrayDrinkMenu[i].drink_flavor , ArrayDrinkMenu[i].drink_size);
 		index++;
 	}
 	
@@ -59,7 +59,7 @@ void order(){
    		ArrayDrink[DrinkLen].food_price = ArrayDrinkMenu[orderMenu].food_price;
     	strCpy(ArrayDrink[DrinkLen].drink_flavor , ArrayDrinkMenu[orderMenu].drink_flavor);
     	ArrayDrink[DrinkLen].drink_size = ArrayDrinkMenu[orderMenu].drink_size;
-    	ArrayDrinkMenu[DrinkMenuLen].drink_cooking_time = ArrayDrinkMenu[orderMenu].drink_cooking_time;
+    	ArrayDrink[DrinkMenuLen].drink_cooking_time = ArrayDrinkMenu[orderMenu].drink_cooking_time;
     	DrinkLen++;
 	}
 	
