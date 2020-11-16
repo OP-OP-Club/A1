@@ -1,76 +1,79 @@
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
-#include "hDirectory/global.h"
+#include "global.h"
 
 
 void addDesertAndBeverage(){
-  int choice = 0, foodPrice = 0;
-  char foodName[105];
 
-  printf("What do you want to add?\n");
-  printf("1. Dessert\n");
-  printf("2. Drinks\n");
-  do{
-    printf("Choose: ");
-    scanf("%d", &choice);
-  }while (choice < 1 || choice > 2);
+    ClearScreen();
 
-  do{
-    getchar();
-    printf("Input the name [at least 5 characters]: ");
-    scanf("%[^\n]", foodName);
-  }while (strlen(foodName) < 5);
+    int choice = 0, foodPrice = 0;
+    char foodName[105];
 
-  do{
-    getchar();
-    printf("Input the price [10 - 500]: $");
-    scanf("%d", &foodPrice);
-  }while(foodPrice < 10 || foodPrice > 500);
-
-  srand(time(NULL));
-  if (choice == 1){
-    char topping[105];
-    float calories = 0;
-    int cookTime = 0;
-    int same = 0, idx = 0;
+    printf("What do you want to add?\n");
+    printf("1. Dessert\n");
+    printf("2. Drinks\n");
     do{
-        char top[3][20] = {"Caramel", "Honey", "Syrup"};
-        same = 0, idx = 0;
-        printf("Input the topping ['Caramel' | 'Honey' | 'Syrup'(Case insensitive): ");
-        scanf("%s", topping);
-        
-
-        for (int i = 0; i < 3; i++)  {
-            same = strCaseCmp(topping, top[i]);
-            if (same){
-                idx = i;
-                break;
-            }
-        }  
-    } while (same == 0);
+        printf("Choose: ");
+        scanf("%d", &choice);
+    }while (choice < 1 || choice > 2);
 
     do{
-        printf("Insert Calories [1.00 - 99.00]: ");
-        scanf("%f", calories);
-    } while (calories < 1.00 || calories > 99.00);
-    
-    cookTime = (rand() % 41) + 50;
-    if (idx == 0)
-        cookTime += 10;
-    else if (idx == 1)
-        cookTime += 15;
-    else if (idx == 2)
-        cookTime += 20;
+        getchar();
+        printf("Input the name [at least 5 characters]: ");
+        scanf("%[^\n]", foodName);
+    }while (strlen(foodName) < 5);
 
-    strCpy(ArrayDessertMenu[DessertMenuLen].food_name, foodName);
-    ArrayDessertMenu[DessertMenuLen].food_price = foodPrice;
-    strCpy(ArrayDessertMenu[DessertMenuLen].dessert_topping, topping);
-    ArrayDessertMenu[DessertMenuLen].dessert_calories = calories;
-    ArrayDessertMenu[DessertMenuLen].dessert_cooking_time = cookTime;
-    DessertLen++;
+    do{
+        getchar();
+        printf("Input the price [10 - 500]: $");
+        scanf("%d", &foodPrice);
+    }while(foodPrice < 10 || foodPrice > 500);
 
-  }else{
+    srand(time(NULL));
+    if (choice == 1){
+        char topping[105];
+        float calories = 0;
+        int cookTime = 0;
+        int same = 0, idx = 0;
+        do{
+            char top[3][20] = {"Caramel", "Honey", "Syrup"};
+            same = 0, idx = 0;
+            printf("Input the topping ['Caramel' | 'Honey' | 'Syrup'(Case insensitive): ");
+            scanf("%s", topping);
+
+
+            for (int i = 0; i < 3; i++)  {
+                same = strCaseCmp(topping, top[i]);
+                if (same == 0){
+                    idx = i;
+                    break;
+                }
+            }  
+        } while (same);
+
+        do{
+            printf("Insert Calories [1.00 - 99.00]: ");
+            scanf("%f", &calories);
+        } while (calories < 1.00 || calories > 99.00);
+
+        cookTime = (rand() % 41) + 50;
+        if (idx == 0)
+            cookTime += 10;
+        else if (idx == 1)
+            cookTime += 15;
+        else if (idx == 2)
+            cookTime += 20;
+
+        strCpy(ArrayDessertMenu[DessertMenuLen].food_name, foodName);
+        ArrayDessertMenu[DessertMenuLen].food_price = foodPrice;
+        strCpy(ArrayDessertMenu[DessertMenuLen].dessert_topping, topping);
+        ArrayDessertMenu[DessertMenuLen].dessert_calories = calories;
+        ArrayDessertMenu[DessertMenuLen].dessert_cooking_time = cookTime;
+        DessertMenuLen++;
+
+    }else{
     char flavor[105];
     int same = 0, idx = 0;
     int cookTime = 0;
@@ -81,14 +84,14 @@ void addDesertAndBeverage(){
         scanf("%[^\n]", flavor);
         for (int i = 0 ; i < 3; i++){
             same = strCmp(flav[i], flavor);
-            if (same)
+            if (same == 0)
             {
                 idx = i;
                 break;
             }
         }
-    } while (same == 0);
-    
+    } while (same);
+
     char size;
     int sizeFlag = 0;
     do{
@@ -100,21 +103,21 @@ void addDesertAndBeverage(){
         }
     } while (sizeFlag == 0);
 
-    cookTime = (rand() % 41) + 10;
-    if (idx == 0)
+        cookTime = (rand() % 41) + 10;
+        if (idx == 0)
         cookTime += 10;
-    else if (idx == 1)
+        else if (idx == 1)
         cookTime += 20;
-    else if (idx == 2)
+        else if (idx == 2)
         cookTime += 30;
 
-    strCpy(ArrayDrinkMenu[DrinkMenuLen].food_name, foodName);
-    ArrayDrinkMenu[DrinkMenuLen].food_price = foodPrice;
-    strCpy(ArrayDrinkMenu[DrinkMenuLen].drink_flavor, flavor);
-    ArrayDrinkMenu[DrinkMenuLen].drink_size = size;
-    ArrayDrinkMenu[DrinkMenuLen].drink_cooking_time = cookTime;
-    DrinkMenuLen++;
-  }
-  printf("Succesfully added a new menu!");
-  getchar();
+        strCpy(ArrayDrinkMenu[DrinkMenuLen].food_name, foodName);
+        ArrayDrinkMenu[DrinkMenuLen].food_price = foodPrice;
+        strCpy(ArrayDrinkMenu[DrinkMenuLen].drink_flavor, flavor);
+        ArrayDrinkMenu[DrinkMenuLen].drink_size = size;
+        ArrayDrinkMenu[DrinkMenuLen].drink_cooking_time = cookTime;
+        DrinkMenuLen++;
+    }
+    printf("Succesfully added a new menu!");
+    getchar();
 }

@@ -1,10 +1,10 @@
 #include<stdio.h>
-#include "../hDirectory/global.h"
-#include "../hDirectory/Tugas-5.h"
+#include<time.h>
+#include "../hDirectory/Tugas-2.h"
 
 int main(){
 
-	orderHistory();
+	operCookedMainMenu();
 
     return 0;
 }

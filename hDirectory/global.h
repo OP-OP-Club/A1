@@ -1,8 +1,6 @@
 #ifndef GLOBAL_VARIABLE
 #define GLOBAL_VARIABLE 1
 
-#include<stdlib.h>
-
 //Variabel Global Profit
 int PROFIT = 0;
 
