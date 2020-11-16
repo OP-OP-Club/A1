@@ -1,7 +1,7 @@
-#include<stdio.h>
 #include "global.h"
 
 void order(){
+
 	ClearScreen();
 	
 	if(DessertMenuLen==0&&DrinkMenuLen==0){
@@ -35,12 +35,17 @@ void order(){
 		else {
 			printf("Choose a menu to order [ 1 - %d ]:",DessertMenuLen+DrinkMenuLen);	
 		}
-		scanf("%d",orderMenu);
+		scanf("%d", &orderMenu);
 		puts("");
 		
+		printf("order menu : %d\n", orderMenu);
 	}while(orderMenu<1||orderMenu>(DessertMenuLen+DrinkMenuLen));
 	
-	
+	char created_at_now[100];
+    time_t t = time(NULL);
+    struct tm tm = *localtime(&t);
+    sprintf(created_at_now, "%d-%02d-%02d %02d:%02d:%02d", tm.tm_year + 1900, tm.tm_mon + 1, tm.tm_mday, tm.tm_hour, tm.tm_min, tm.tm_sec);
+
 	//strcpy
 	if(orderMenu<=DessertMenuLen){
 		orderMenu--;
@@ -49,6 +54,7 @@ void order(){
 		strCpy(ArrayDessert[DessertLen].dessert_topping , ArrayDessertMenu[orderMenu].dessert_topping);
     	ArrayDessert[DessertLen].dessert_calories = ArrayDessertMenu[orderMenu].dessert_calories;
     	ArrayDessert[DessertLen].dessert_cooking_time = ArrayDessertMenu[orderMenu].dessert_cooking_time;
+		strCpy(ArrayDessert[DessertLen].created_at, created_at_now);
     	DessertLen++;
 	}
 	
@@ -60,7 +66,8 @@ void order(){
     	strCpy(ArrayDrink[DrinkLen].drink_flavor , ArrayDrinkMenu[orderMenu].drink_flavor);
     	ArrayDrink[DrinkLen].drink_size = ArrayDrinkMenu[orderMenu].drink_size;
     	ArrayDrink[DrinkMenuLen].drink_cooking_time = ArrayDrinkMenu[orderMenu].drink_cooking_time;
-    	DrinkLen++;
+    	strCpy(ArrayDrink[DrinkMenuLen].created_at, created_at_now);
+		DrinkLen++;
 	}
 	
 	
