@@ -1,6 +1,11 @@
 #ifndef GLOBAL_VARIABLE
 #define GLOBAL_VARIABLE 1
 
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+#include <time.h>
+
 //Variabel Global Profit
 int PROFIT = 0;
 
@@ -30,7 +35,7 @@ struct Dessert {
     int dessert_cooking_time;
     char created_at[50];
 
-    // struct Dessert *next;
+     struct Dessert *next;
 };
 
 struct Drink {
@@ -41,7 +46,7 @@ struct Drink {
     int drink_cooking_time;
     char created_at[50];
 
-    // struct Drink *next;
+     struct Drink *next;
 };
 
 struct Dessert ArrayDessert[500];
@@ -71,6 +76,16 @@ int strlen(char arr[]){
     }
 
     return count;
+}
+
+char* GetTimeNow(){
+	char* temp;
+	time_t t = time(NULL);
+    struct tm tm = *localtime(&t);
+	
+	sprintf(temp, "%d-%02d-%02d %02d:%02d:%02d\n", tm.tm_year + 1900, tm.tm_mon + 1, tm.tm_mday, tm.tm_hour, tm.tm_min, tm.tm_sec);
+
+	return temp;
 }
 
 // 0 -> not same, 1 -> Same , case SENSTIVIE
@@ -127,58 +142,63 @@ void strCpy(char arr1[], char arr2[]){
 }
 
 
-// struct Dessert* InitializeDessertLinkedList(){
-//     return (struct Dessert*) malloc (sizeof(struct Dessert));
-// }
+ struct Dessert* InitializeDessertLinkedList(){
+     return (struct Dessert*) malloc (sizeof(struct Dessert));
+ }
 
-// struct Drink* InitializeDrinkLinkedList(){
-//     return(struct Drink*) malloc(sizeof(struct Drink));
-// }
+ struct Drink* InitializeDrinkLinkedList(){
+     return(struct Drink*) malloc(sizeof(struct Drink));
+ }
 
-// struct Dessert* CreateDessertNodes(char food_name[500], int food_price, char dessert_topping[20], float dessert_calories, int dessert_cooking_time){
-//     struct Dessert *temp = InitializeDessertLinkedList();
+ struct Dessert* CreateDessertNodes(char *food_name, int food_price, char *dessert_topping, float dessert_calories, int dessert_cooking_time){
+     struct Dessert *temp = InitializeDessertLinkedList();
     
-//     strcpy(&temp->food_name, food_name);
-//     // temp->food_name = food_name;
-//     temp->food_price = food_price;
+     strcpy(temp->food_name, food_name);
+     // temp->food_name = food_name;
+     temp->food_price = food_price;
 //     temp->dessert_topping = dessert_topping;
-//     temp->dessert_calories = dessert_calories;
-//     temp->dessert_cooking_time = dessert_cooking_time;
-//     temp->next = NULL;
+     strcpy(temp->dessert_topping, dessert_topping);
+     printf("%s %s\n", temp->dessert_topping, dessert_topping);
+     temp->dessert_calories = dessert_calories;
+     temp->dessert_cooking_time = dessert_cooking_time;
+     strcpy(temp->created_at, "2020-01-01");
+     temp->next = NULL;
     
-//     return temp;
-// }
+     return temp;
+ }
 
-// struct Drink* CreateDrinkNodes(char food_name[500], int food_price, char drink_flavor[20], float drink_size, int drink_cooking_time){
-//     struct Drink *temp = InitializeDrinkLinkedList();
-//     temp->food_name = food_name;
-//     temp->food_price = food_price;
+ struct Drink* CreateDrinkNodes(char *food_name, int food_price, char *drink_flavor, char drink_size, int drink_cooking_time){
+     struct Drink *temp = InitializeDrinkLinkedList();
+     
+     strcpy(temp->food_name, food_name);
+     temp->food_price = food_price;
 //     temp->drink_flavor = drink_flavor;
-//     temp->drink_size = drink_size;
-//     temp->drink_cooking_time = drink_cooking_time;
-//     temp->next = NULL;
+     strcpy(temp->drink_flavor, drink_flavor);
+     temp->drink_size = drink_size;
+     temp->drink_cooking_time = drink_cooking_time;
+     temp->next = NULL;
     
-//     return temp;
-// }
+     return temp;
+ }
 
-// void DessertPushBack(struct Dessert **head , struct Dessert **tail, struct Dessert* add){
-//     if((*head) != NULL){
-//         *head = *tail = add;
-//     }
-//     else{
-//         (*tail)->next = add;
-//         (*tail) = (*tail)->next;
-//     }
-// }
+ void DessertPushBack(struct Dessert **head , struct Dessert **tail, struct Dessert* add){
+     if((*head) != NULL){
+         *head = *tail = add;
+     }
+     else{
+         (*tail)->next = add;
+         (*tail) = (*tail)->next;
+     }
+ }
 
-// void DrinkPushBack(struct Drink **head, struct Drink **tail, struct Drink* add){
-//     if((*head) != NULL){
-//         *head = *tail = add;
-//     }
-//     else{
-//         (*tail)->next = add;
-//         (*tail) = (*tail)->next;
-//     }
-// }
+ void DrinkPushBack(struct Drink **head, struct Drink **tail, struct Drink* add){
+     if((*head) != NULL){
+         *head = *tail = add;
+     }
+     else{
+         (*tail)->next = add;
+         (*tail) = (*tail)->next;
+     }
+ }
 
 #endif
