@@ -17,6 +17,8 @@ struct MenuDessert {
     char dessert_topping[20];
     float dessert_calories;
     int dessert_cooking_time;
+    
+    struct MenuDessert *next;
 };
 
 struct MenuDrink {
@@ -25,6 +27,8 @@ struct MenuDrink {
     char drink_flavor[20];
     char drink_size;
     int drink_cooking_time;
+    
+    struct MenuDrink *next;
 };
 
 struct Dessert {
@@ -35,7 +39,7 @@ struct Dessert {
     int dessert_cooking_time;
     char created_at[50];
 
-     struct Dessert *next;
+    struct Dessert *next;
 };
 
 struct Drink {
@@ -46,19 +50,28 @@ struct Drink {
     int drink_cooking_time;
     char created_at[50];
 
-     struct Drink *next;
+    struct Drink *next;
 };
 
-struct Dessert ArrayDessert[500];
-struct Drink ArrayDrink[500];
-struct MenuDessert ArrayDessertMenu[500];
-struct MenuDrink ArrayDrinkMenu[500];
+struct Dessert *ArrayDessertHead = NULL;
+struct Dessert *ArrayDessertTail = NULL;
+struct Drink *ArrayDrinkHead = NULL;
+struct Drink *ArrayDrinkTail = NULL;
+struct MenuDessert *ArrayDessertMenuHead = NULL;
+struct MenuDessert *ArrayDessertMenuTail = NULL;
+struct MenuDrink *ArrayDrinkMenuHead = NULL;
+struct MenuDrink *ArrayDrinkMenuTail = NULL;
 
-int DessertLen = 0;
-int DrinkLen = 0;
-
-int DessertMenuLen = 0;
-int DrinkMenuLen = 0;
+//struct Dessert ArrayDessert[500];
+//struct Drink ArrayDrink[500];
+//struct MenuDessert ArrayDessertMenu[500];
+//struct MenuDrink ArrayDrinkMenu[500];
+//
+//int DessertLen = 0;
+//int DrinkLen = 0;
+//
+//int DessertMenuLen = 0;
+//int DrinkMenuLen = 0;
 
 //ClearScreen
 void ClearScreen(){
@@ -150,6 +163,14 @@ void strCpy(char arr1[], char arr2[]){
      return(struct Drink*) malloc(sizeof(struct Drink));
  }
 
+ struct MenuDessert* InitializeDessertMenuLinkedList(){
+     return(struct MenuDessert*) malloc(sizeof(struct MenuDessert));
+ }
+
+ struct MenuDrink* InitializeDrinkMenuLinkedList(){
+     return(struct MenuDrink*) malloc(sizeof(struct MenuDrink));
+ }
+
  struct Dessert* CreateDessertNodes(char *food_name, int food_price, char *dessert_topping, float dessert_calories, int dessert_cooking_time){
      struct Dessert *temp = InitializeDessertLinkedList();
     
@@ -158,7 +179,6 @@ void strCpy(char arr1[], char arr2[]){
      temp->food_price = food_price;
 //     temp->dessert_topping = dessert_topping;
      strcpy(temp->dessert_topping, dessert_topping);
-     printf("%s %s\n", temp->dessert_topping, dessert_topping);
      temp->dessert_calories = dessert_calories;
      temp->dessert_cooking_time = dessert_cooking_time;
      strcpy(temp->created_at, "2020-01-01");
@@ -176,29 +196,99 @@ void strCpy(char arr1[], char arr2[]){
      strcpy(temp->drink_flavor, drink_flavor);
      temp->drink_size = drink_size;
      temp->drink_cooking_time = drink_cooking_time;
+     strcpy(temp->created_at, "2020-01-01");
+     temp->next = NULL;
+    
+     return temp;
+ }
+ 
+ struct MenuDessert* CreateDessertMenuNodes(char *food_name, int food_price, char *dessert_topping, float dessert_calories, int dessert_cooking_time){
+     struct MenuDessert *temp = InitializeDessertMenuLinkedList();
+    
+     strcpy(temp->food_name, food_name);
+     // temp->food_name = food_name;
+     temp->food_price = food_price;
+//     temp->dessert_topping = dessert_topping;
+     strcpy(temp->dessert_topping, dessert_topping);
+     temp->dessert_calories = dessert_calories;
+     temp->dessert_cooking_time = dessert_cooking_time;
      temp->next = NULL;
     
      return temp;
  }
 
- void DessertPushBack(struct Dessert **head , struct Dessert **tail, struct Dessert* add){
-     if((*head) != NULL){
-         *head = *tail = add;
+ struct MenuDrink* CreateDrinkMenuNodes(char *food_name, int food_price, char *drink_flavor, char drink_size, int drink_cooking_time){
+     struct MenuDrink *temp = InitializeDrinkMenuLinkedList();
+     
+     strcpy(temp->food_name, food_name);
+     temp->food_price = food_price;
+//     temp->drink_flavor = drink_flavor;
+     strcpy(temp->drink_flavor, drink_flavor);
+     temp->drink_size = drink_size;
+     temp->drink_cooking_time = drink_cooking_time;
+     temp->next = NULL;
+    
+     return temp;
+ }
+ 
+ void DessertPushBack(struct Dessert* add){
+     if((ArrayDessertHead) == NULL){
+         ArrayDessertHead = ArrayDessertTail = add;
      }
      else{
-         (*tail)->next = add;
-         (*tail) = (*tail)->next;
+         (ArrayDessertTail)->next = add;
+         (ArrayDessertTail) = (ArrayDessertTail)->next;
+     }
+ }
+ 
+ void DrinkPushBack(struct Drink* add){
+     if((ArrayDrinkHead) == NULL){
+         ArrayDrinkHead = ArrayDrinkTail = add;
+     }
+     else{
+         (ArrayDrinkTail)->next = add;
+         (ArrayDrinkTail) = (ArrayDrinkTail)->next;
+     }
+ }
+ 
+ void DessertMenuPushBack(struct MenuDessert* add){
+     if((ArrayDessertMenuHead) == NULL){
+         ArrayDessertMenuHead = ArrayDessertMenuTail = add;
+     }
+     else{
+         (ArrayDessertMenuTail)->next = add;
+         (ArrayDessertMenuTail) = (ArrayDessertMenuTail)->next;
+     }
+ }
+ 
+ void DrinkMenuPushBack(struct MenuDrink* add){
+     if((ArrayDrinkMenuHead) == NULL){
+         ArrayDrinkMenuHead = ArrayDrinkMenuTail = add;
+     }
+     else{
+         (ArrayDrinkMenuTail)->next = add;
+         (ArrayDrinkMenuTail) = (ArrayDrinkMenuTail)->next;
      }
  }
 
- void DrinkPushBack(struct Drink **head, struct Drink **tail, struct Drink* add){
-     if((*head) != NULL){
-         *head = *tail = add;
-     }
-     else{
-         (*tail)->next = add;
-         (*tail) = (*tail)->next;
-     }
- }
+// void DessertPushBack(struct Dessert **head , struct Dessert **tail, struct Dessert* add){
+//     if((*head) == NULL){
+//         *head = *tail = add;
+//     }
+//     else{
+//         (*tail)->next = add;
+//         (*tail) = (*tail)->next;
+//     }
+// }
+//
+// void DrinkPushBack(struct Drink **head, struct Drink **tail, struct Drink* add){
+//     if((*head) == NULL){
+//         *head = *tail = add;
+//     }
+//     else{
+//         (*tail)->next = add;
+//         (*tail) = (*tail)->next;
+//     }
+// }
 
 #endif
