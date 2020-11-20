@@ -6,20 +6,20 @@ void orderHistory() {
 
 	int ordered_flag=0;
 	Dessert *curr = ArrayDessertHead;
-	while (curr){
+	while (curr) {
 		if(curr->dessert_cooking_time<=0){
 			ordered_flag = 1;
 			break;
 		}
 	}
 	Drink *temp = ArrayDrinkHead;
-	while (temp){
+	while (temp) {
 		if(temp->drink_cooking_time<=0){
 			ordered_flag = 1;
 			break;
 		}
 	}
-	if(ordered_flag==0){
+	if(ordered_flag==0) {
 		printf("There is no Order History!\n\n");
 		getchar();
 		printf("Press enter to continue...");
