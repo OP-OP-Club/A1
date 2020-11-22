@@ -1,20 +1,25 @@
-#include<stdio.h>
 #include "global.h"
 
 void orderHistory() {
-	system("cls");
+	
+	ClearScreen();
+
 	int ordered_flag=0;
-	for(int i=0;i<DessertLen;i++){
-		if(ArrayDessert[i].dessert_cooking_time<=0){
+	Dessert *curr = ArrayDessertHead;
+	while (curr) {
+		if(curr->dessert_cooking_time<=0){
 			ordered_flag = 1;
+			break;
 		}
 	}
-	for(int i=0;i<DrinkLen;i++){
-		if(ArrayDrink[i].drink_cooking_time<=0){
+	Drink *temp = ArrayDrinkHead;
+	while (temp) {
+		if(temp->drink_cooking_time<=0){
 			ordered_flag = 1;
+			break;
 		}
 	}
-	if(ordered_flag==0){
+	if(ordered_flag==0) {
 		printf("There is no Order History!\n\n");
 		getchar();
 		printf("Press enter to continue...");
@@ -24,15 +29,18 @@ void orderHistory() {
     puts("| No  | Name                 | Price  | Topping    | Callories  | Flavor     | size  | Order Time           |");
     puts(" -----------------------------------------------------------------------------------------------------------");
     int index = 1;
-    for(int i = 0; i<DessertLen; i++){
-        if(ArrayDessert[i].dessert_cooking_time<=0){
-			printf("| %-4d| %-21s| %-7d| %-11s| %-11.2f| -          | -     | %s  |\n", index, ArrayDessert[i].food_name, ArrayDessert[i].food_price, ArrayDessert[i].dessert_topping, ArrayDessert[i].dessert_calories, ArrayDessert[i].created_at);
+	curr = ArrayDessertHead;
+    while(curr) {
+        if(curr->dessert_cooking_time<=0){
+			printf("| %-4d| %-21s| %-7d| %-11s| %-11.2f| -          | -     | %-20s |\n", index, curr->food_name, curr->food_price, curr->dessert_topping, curr->dessert_calories, curr->created_at);
         	index++;
 		}
+		curr = curr->next;
     }
-    for(int i = 0; i<DrinkLen; i++){
-        if(ArrayDrink[i].drink_cooking_time<=0){
-			printf("| %-4d| %-21s| %-7d| -          |-           | %-11s| %c     | %s  |\n", index, ArrayDrink[i].food_name, ArrayDrink[i].food_price, ArrayDrink[i].drink_flavor, ArrayDrink[i].drink_size, ArrayDrink[i].created_at);
+	temp = ArrayDrinkHead;
+    while(temp) {
+        if(temp->drink_cooking_time<=0){
+			printf("| %-4d| %-21s| %-7d| -          |-           | %-11s| %c     | %-20s |", index, temp->food_name, temp->food_price, temp->drink_flavor, temp->drink_size, temp->created_at);
 			index++;
 		}
 	}
