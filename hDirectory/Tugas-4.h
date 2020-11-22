@@ -1,4 +1,4 @@
-//mau ganti linked list, testing push
+
 #include <stdio.h>
 #include "global.h"
 
@@ -139,6 +139,16 @@ void showCookingProcess(){
                 }
             }
         }
+        //cek drink dan kurangi 10 detik
+        if(flag == 0 && DrinkLen != 0){
+            for(int i=0;i<DrinkLen;i++){
+                if(ArrayDrink[i].drink_cooking_time > 0){
+                    flag = 1;
+                    break;
+                }
+            }
+        }   
+    }
 
         //kalau misal flag==0 berarti ga ada yg lagi cooking progress/ga ada isi struct array nya
         if(flag == 0){
@@ -169,6 +179,7 @@ void showCookingProcess(){
                 currDessert = currDessert->next;
                 currFlag = currFlag->next;
             }
+        }
 
             currDrink = ArrayDrinkHead;
             currFlag = FlagDrinkHead;
@@ -187,7 +198,6 @@ void showCookingProcess(){
                 currDrink = currDrink->next;
                 currFlag = currFlag->next;
             }
-
             printf("\n");
             printf("Press Enter to return to main menu\n");
             getchar();

@@ -1,8 +1,8 @@
 #include"global.h"
-//#include"Tugas-3.h"
+#include"Tugas-3.h"
 #include"Tugas-4.h"
-//#include"Tugas-5.h"
-//#include"Tugas-6.h"
+#include"Tugas-5.h"
+#include"Tugas-6.h"
 
 void operCookedMainMenu(){
     
@@ -26,16 +26,16 @@ void operCookedMainMenu(){
         if(choice >= 1 && choice <= 5){
             
             if(choice == 1){
-                //addDesertAndBeverage();
+                addDesertAndBeverage();
             }
             else if(choice == 2){
                 showCookingProcess();
             }
             else if(choice == 3){
-                //orderHistory();
+                orderHistory();
             }
             else if(choice == 4){
-                //order();
+                order();
             }
             else{
                 break;
