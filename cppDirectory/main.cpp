@@ -3,7 +3,6 @@
 #include "../hDirectory/Tugas-2.h"
 
 int main(){
-
 	operCookedMainMenu();
 
     return 0;
