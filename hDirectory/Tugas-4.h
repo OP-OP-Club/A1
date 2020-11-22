@@ -139,15 +139,6 @@ void showCookingProcess(){
                 }
             }
         }
-        //cek drink dan kurangi 10 detik
-        if(flag == 0 && DrinkLen != 0){
-            for(int i=0;i<DrinkLen;i++){
-                if(ArrayDrink[i].drink_cooking_time > 0){
-                    flag = 1;
-                    break;
-                }
-            }
-        }   
     }
 
         //kalau misal flag==0 berarti ga ada yg lagi cooking progress/ga ada isi struct array nya
