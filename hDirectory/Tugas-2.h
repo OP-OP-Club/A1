@@ -1,6 +1,6 @@
 #include"global.h"
 //#include"Tugas-3.h"
-//#include"Tugas-4.h"
+#include"Tugas-4.h"
 //#include"Tugas-5.h"
 //#include"Tugas-6.h"
 
@@ -29,7 +29,7 @@ void operCookedMainMenu(){
                 //addDesertAndBeverage();
             }
             else if(choice == 2){
-                //showCookingProcess();
+                showCookingProcess();
             }
             else if(choice == 3){
                 //orderHistory();
