@@ -9,7 +9,7 @@ void showCookingProcess(){
         int flag = 0; //tanda apakah ada yang masih dimasak ato nggak (0 = tidak)
         int numberProcess=1;
         //cek apakah struct dessert/drink ada isinya ato nggak, kalo ga ada berarti ga ada yang dimasak --> flag = 0
-        if(DessertLen != 0 || DrinkLen != 0){
+        if(ArrayDessertHead != NULL || ArrayDrinkHead != NULL){
             flag = 1;
         }
 
