@@ -1,3 +1,4 @@
+//mau ganti linked list, testing push
 #include <stdio.h>
 #include "global.h"
 
