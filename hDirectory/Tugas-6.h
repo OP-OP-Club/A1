@@ -78,7 +78,7 @@ void order(){
 		}
 		
 		Drink *temp2= CreateDrinkNodes(curr2->food_name,curr2->food_price,curr2->drink_flavor,curr2->drink_size,curr2->drink_cooking_time);
-		DessertPushBack(temp2);
+		DrinkPushBack(temp2);
 	
 	}
  
