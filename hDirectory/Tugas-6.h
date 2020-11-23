@@ -74,7 +74,7 @@ void order(){
 		
 		curr2 = ArrayDrinkMenuHead;
 		while(orderMenu--){
-			curr = curr->next;
+			curr2 = curr2->next;
 		}
 		
 		Drink *temp2= CreateDrinkNodes(curr2->food_name,curr2->food_price,curr2->drink_flavor,curr2->drink_size,curr2->drink_cooking_time);
