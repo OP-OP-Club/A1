@@ -63,7 +63,6 @@ void order(){
 			curr = curr->next;
 		}
  
-		//Aku udah sampai sini
 		Dessert *temp= CreateDessertNodes(curr->food_name,curr->food_price,curr->dessert_topping,curr->dessert_calories,curr->dessert_cooking_time);
  		DessertPushBack(temp);
 	}
@@ -86,6 +85,7 @@ void order(){
 	puts("");
 	printf("Succesfully add to order list!\n\n");
 	printf("Please Enter to Continue");
+	getchar();
 	getchar();
 	return;
 }
