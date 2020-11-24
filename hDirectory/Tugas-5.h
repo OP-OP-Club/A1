@@ -2,7 +2,7 @@
 
 void orderHistory() {
 	
-	ClearScreen();
+    system("@cls||clear");
 
 	int ordered_flag=0;
 	Dessert *curr = ArrayDessertHead;
@@ -11,6 +11,7 @@ void orderHistory() {
 			ordered_flag = 1;
 			break;
 		}
+		curr = curr->next;
 	}
 	Drink *temp = ArrayDrinkHead;
 	while (temp) {
@@ -18,7 +19,9 @@ void orderHistory() {
 			ordered_flag = 1;
 			break;
 		}
+		temp = temp->next;
 	}
+	
 	if(ordered_flag==0) {
 		printf("There is no Order History!\n\n");
 		getchar();

@@ -62,16 +62,16 @@ struct MenuDessert *ArrayDessertMenuTail = NULL;
 struct MenuDrink *ArrayDrinkMenuHead = NULL;
 struct MenuDrink *ArrayDrinkMenuTail = NULL;
 
-//struct Dessert ArrayDessert[500];
-//struct Drink ArrayDrink[500];
-//struct MenuDessert ArrayDessertMenu[500];
-//struct MenuDrink ArrayDrinkMenu[500];
-//
-//int DessertLen = 0;
-//int DrinkLen = 0;
-//
-//int DessertMenuLen = 0;
-//int DrinkMenuLen = 0;
+struct Dessert ArrayDessert[500];
+struct Drink ArrayDrink[500];
+struct MenuDessert ArrayDessertMenu[500];
+struct MenuDrink ArrayDrinkMenu[500];
+
+int DessertLen = 0;
+int DrinkLen = 0;
+
+int DessertMenuLen = 0;
+int DrinkMenuLen = 0;
 
 //ClearScreen
 void ClearScreen(){
@@ -96,63 +96,63 @@ char* GetTimeNow(){
 	time_t t = time(NULL);
     struct tm tm = *localtime(&t);
 	
-	sprintf(temp, "%d-%02d-%02d %02d:%02d:%02d\n", tm.tm_year + 1900, tm.tm_mon + 1, tm.tm_mday, tm.tm_hour, tm.tm_min, tm.tm_sec);
+	sprintf(temp, "%d-%02d-%02d %02d:%02d:%02d", tm.tm_year + 1900, tm.tm_mon + 1, tm.tm_mday, tm.tm_hour, tm.tm_min, tm.tm_sec);
 
 	return temp;
 }
 
 // 0 -> not same, 1 -> Same , case SENSTIVIE
-int strCmp(char string1[], char string2[]){
-    if(strlen(string1) != strlen(string2)){
-        return 0;
-    }
+//int strCmp(char string1[], char string2[]){
+//    if(strlen(string1) != strlen(string2)){
+//        return 0;
+//    }
+//
+//    int stringlen = strlen(string1);
+//    for(int i = 0; i < stringlen; i++){
+//        if(string1[i] != string2[i]){
+//            return 0;
+//        }
+//    }
+//
+//    return 1;
+//}
 
-    int stringlen = strlen(string1);
-    for(int i = 0; i < stringlen; i++){
-        if(string1[i] != string2[i]){
-            return 0;
-        }
-    }
+//// 0 -> not same, 1 -> Same , case INSENSITIVE
+//int strCaseCmp(char string1[], char string2[]){
+//    if(strlen(string1) != strlen(string2)){
+//        return 0;
+//    }
+//
+//    int stringlen = strlen(string1);
+//    for(int i = 0; i < stringlen; i++){
+//        if(string2[i] >= 'A' && string2[i] <= 'Z'){
+//            string1[i] += 32;
+//        }
+//        
+//        if(string2[i] >= 'A' && string2[i] <= 'Z'){
+//            string1[i] += 32;
+//        }
+//
+//        if(string1[i] != string2[i]){
+//            return 0;
+//        }
+//    }
+//
+//    return 1;
+//}
 
-    return 1;
-}
-
-// 0 -> not same, 1 -> Same , case INSENSITIVE
-int strCaseCmp(char string1[], char string2[]){
-    if(strlen(string1) != strlen(string2)){
-        return 0;
-    }
-
-    int stringlen = strlen(string1);
-    for(int i = 0; i < stringlen; i++){
-        if(string2[i] >= 'A' && string2[i] <= 'Z'){
-            string1[i] += 32;
-        }
-        
-        if(string2[i] >= 'A' && string2[i] <= 'Z'){
-            string1[i] += 32;
-        }
-
-        if(string1[i] != string2[i]){
-            return 0;
-        }
-    }
-
-    return 1;
-}
-
-void strCpy(char arr1[], char arr2[]){
-    int arr2len = strlen(arr2);
-
-    int index = 0;
-
-    for(int i = 0; i < arr2len; i++){
-        arr1[i] = arr2[i];
-        index++;
-    }
-
-    arr1[index] = '\0';
-}
+//void strCpy(char arr1[], char arr2[]){
+//    int arr2len = strlen(arr2);
+//
+//    int index = 0;
+//
+//    for(int i = 0; i < arr2len; i++){
+//        arr1[i] = arr2[i];
+//        index++;
+//    }
+//
+//    arr1[index] = '\0';
+//}
 
 
  struct Dessert* InitializeDessertLinkedList(){
@@ -181,7 +181,7 @@ void strCpy(char arr1[], char arr2[]){
      strcpy(temp->dessert_topping, dessert_topping);
      temp->dessert_calories = dessert_calories;
      temp->dessert_cooking_time = dessert_cooking_time;
-     strcpy(temp->created_at, "2020-01-01");
+     strcpy(temp->created_at, GetTimeNow());
      temp->next = NULL;
     
      return temp;
@@ -196,7 +196,7 @@ void strCpy(char arr1[], char arr2[]){
      strcpy(temp->drink_flavor, drink_flavor);
      temp->drink_size = drink_size;
      temp->drink_cooking_time = drink_cooking_time;
-     strcpy(temp->created_at, "2020-01-01");
+     strcpy(temp->created_at, GetTimeNow());
      temp->next = NULL;
     
      return temp;

@@ -91,7 +91,7 @@ void showCookingProcess(){
         Drink *currDrink;
         FlagNode *currFlag;
 
-        ClearScreen();
+    	system("@cls||clear");
 
         int flag = 0; //tanda apakah ada yang masih dimasak ato nggak (0 = tidak)
         int numberProcess=1;
@@ -139,7 +139,6 @@ void showCookingProcess(){
                 }
             }
         }
-    }
 
         //kalau misal flag==0 berarti ga ada yg lagi cooking progress/ga ada isi struct array nya
         if(flag == 0){
@@ -172,26 +171,25 @@ void showCookingProcess(){
             }
         }
 
-            currDrink = ArrayDrinkHead;
-            currFlag = FlagDrinkHead;
-            while(currDrink && currFlag){
-                if(currDrink->drink_cooking_time>0){
-                    printf("| %-3d | Drink         | %-24s| $%-3d   | %-2d      s |\n", numberProcess, currDrink->food_name , currDrink->food_price, currDrink->drink_cooking_time);
-                    numberProcess++;
-                    currDrink->drink_cooking_time-=10;
-                    if(currDrink->drink_cooking_time<=0) {
-                        currDrink->drink_cooking_time=0;
-                        if(currFlag->flag == 0){
-                            PROFIT += currDrink->food_price;
-                        }
+        currDrink = ArrayDrinkHead;
+        currFlag = FlagDrinkHead;
+        while(currDrink && currFlag){
+            if(currDrink->drink_cooking_time>0){
+                printf("| %-3d | Drink         | %-24s| $%-3d   | %-2d      s |\n", numberProcess, currDrink->food_name , currDrink->food_price, currDrink->drink_cooking_time);
+                numberProcess++;
+                currDrink->drink_cooking_time-=10;
+                if(currDrink->drink_cooking_time<=0) {
+                    currDrink->drink_cooking_time=0;
+                    if(currFlag->flag == 0){
+                        PROFIT += currDrink->food_price;
                     }
                 }
-                currDrink = currDrink->next;
-                currFlag = currFlag->next;
             }
-            printf("\n");
-            printf("Press Enter to return to main menu\n");
-            getchar();
+            currDrink = currDrink->next;
+            currFlag = currFlag->next;
         }
+        printf("\n");
+        printf("Press Enter to return to main menu\n");
+        getchar();
         clearFlag();
 }
