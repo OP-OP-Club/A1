@@ -7,7 +7,7 @@
 void operCookedMainMenu(){
     
     while(1){
-        ClearScreen();
+    	system("@cls||clear");
 
         printf("Welcome to Opercooked\n");
         printf("Today Profit: $%d\n", PROFIT);

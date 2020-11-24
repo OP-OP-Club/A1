@@ -2,11 +2,12 @@
 #include <time.h>
 #include <stdlib.h>
 #include "global.h"
+#include<string.h>
 
 
 void addDesertAndBeverage(){
 
-    ClearScreen();
+    system("@cls||clear");
 
     int choice = 0, foodPrice = 0;
     char foodName[105];
@@ -45,7 +46,7 @@ void addDesertAndBeverage(){
 
 
             for (int i = 0; i < 3; i++)  {
-                same = strCaseCmp(topping, top[i]);
+                same = strcasecmp(topping, top[i]);
                 if (same == 0){
                     idx = i;
                     break;
@@ -66,12 +67,9 @@ void addDesertAndBeverage(){
         else if (idx == 2)
             cookTime += 20;
 
-        strCpy(ArrayDessertMenu[DessertMenuLen].food_name, foodName);
-        ArrayDessertMenu[DessertMenuLen].food_price = foodPrice;
-        strCpy(ArrayDessertMenu[DessertMenuLen].dessert_topping, topping);
-        ArrayDessertMenu[DessertMenuLen].dessert_calories = calories;
-        ArrayDessertMenu[DessertMenuLen].dessert_cooking_time = cookTime;
-        DessertMenuLen++;
+        struct MenuDessert *menu_dessert = CreateDessertMenuNodes((char *) foodName, foodPrice, (char *)topping, calories, cookTime);
+
+        DessertMenuPushBack(menu_dessert);
 
     }else{
     char flavor[105];
@@ -83,7 +81,7 @@ void addDesertAndBeverage(){
         getchar();
         scanf("%[^\n]", flavor);
         for (int i = 0 ; i < 3; i++){
-            same = strCmp(flav[i], flavor);
+            same = strcmp(flav[i], flavor);
             if (same == 0)
             {
                 idx = i;
@@ -111,12 +109,10 @@ void addDesertAndBeverage(){
         else if (idx == 2)
         cookTime += 30;
 
-        strCpy(ArrayDrinkMenu[DrinkMenuLen].food_name, foodName);
-        ArrayDrinkMenu[DrinkMenuLen].food_price = foodPrice;
-        strCpy(ArrayDrinkMenu[DrinkMenuLen].drink_flavor, flavor);
-        ArrayDrinkMenu[DrinkMenuLen].drink_size = size;
-        ArrayDrinkMenu[DrinkMenuLen].drink_cooking_time = cookTime;
-        DrinkMenuLen++;
+        
+        struct MenuDrink *menu_drink = CreateDrinkMenuNodes((char *) foodName, foodPrice, (char *)flavor, size, cookTime);
+
+        DrinkMenuPushBack(menu_drink);
     }
     printf("Succesfully added a new menu!");
     getchar();

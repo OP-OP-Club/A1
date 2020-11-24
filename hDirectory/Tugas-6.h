@@ -4,7 +4,7 @@
  
 void order(){
  
-	system("@cls|clear");
+	system("@cls||clear");
  
 	if(ArrayDessertMenuHead == NULL && ArrayDrinkMenuHead==NULL){
 		printf("There is no Dessert or Drink on the list!\n\n");
